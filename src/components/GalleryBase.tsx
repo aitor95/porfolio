@@ -29,8 +29,8 @@ export default function GalleryBase() {
 
   return (
     <>
-      <header class="flex flex-col justify-start items-start mb-12 md:flex-row md:items-end md:justify-between">
-        <div class="flex flex-row gap-2 font-light text-3xl uppercase">
+      <header class="flex flex-col justify-start items-start mb-12 md:flex-row md:items-end md:justify-between w-full">
+        <div class="flex flex-col gap-2 font-light text-3xl uppercase sm:flex-row">
           <a href="/" class="font-bold">
             Aitor Blesa
           </a>

@@ -1,31 +1,6 @@
 ---
 import SkillItem from "@components/SkillItem.astro";
-const SKILLS = [
-  {
-    title: "Frontend",
-    skills: "HTML, CSS, Javascript",
-  },
-  {
-    title: "Backend",
-    skills: "Node.js, REST APIs",
-  },
-  {
-    title: "Frameworks",
-    skills: "React, Astro, Tailwind",
-  },
-  {
-    title: "Base de datos",
-    skills: "SQL",
-  },
-  {
-    title: "Control de versiones",
-    skills: "Git, Github, Chrome DevTools",
-  },
-  {
-    title: "Diseño",
-    skills: "Figma, Prototipado, Wireframes",
-  },
-];
+import SKILLS from "@data/skills.json";
 ---
 
 <section id="skills" class="grid grid-cols-1 pt-12
@@ -46,8 +21,8 @@ const SKILLS = [
   </header>
   <article
     class="grid grid-cols-1 gap-y-6 px-1 col-span-full
-        sm:grid-cols-2
-        lg:gap-y-12 lg:grid-cols-12"
+      sm:grid-cols-2
+      lg:gap-y-12 lg:grid-cols-12"
   >
     {
       SKILLS.map((skill, index) => (
