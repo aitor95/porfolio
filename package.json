@@ -7,7 +7,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "script:c": "node ./scripts/convert-gallery.js",
+    "script:t": "node ./scripts/convert-thumbnails.js",
+    "script:g": "node ./scripts/convert-gallery.js"
   },
   "dependencies": {
     "@astrojs/preact": "^3.1.0",
@@ -19,12 +23,13 @@
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "standard": "^17.1.0",
     "fs-extra": "^11.2.0",
     "image-size": "^1.1.1",
     "imagemin": "^8.0.1",
     "imagemin-webp": "^8.0.0",
     "jimp": "^0.22.10",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "@img/sharp-win32-x64": "^0.33.2",
+    "standard": "^17.1.0"
   }
 }
