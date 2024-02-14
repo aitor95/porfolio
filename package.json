@@ -9,9 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
-    "script:c": "node ./scripts/convert-gallery.js",
     "script:t": "node ./scripts/convert-thumbnails.js",
-    "script:g": "node ./scripts/convert-gallery.js"
+    "script:g": "node ./scripts/convert-gallery.js",
+    "script:c": "node ./scripts/create-meta-from-gallery.js"
   },
   "dependencies": {
     "@astrojs/preact": "^3.1.0",
