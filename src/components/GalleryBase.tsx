@@ -34,7 +34,7 @@ export default function GalleryBase() {
           <a href="/" class="font-bold">
             Aitor Blesa
           </a>
-          <span>Photography</span>
+          <span class="text-xl sm:text-3xl">Photography</span>
         </div>
         <nav class="flex gap-4 tracking-widest uppercase font-semibold text-gray-500">
           {/* <a href="" class={`transition-colors hover:text-gray-950 ${location === 'Scotland' ? 'text-gray-950' : ''}`} onClick={handleClick}>
