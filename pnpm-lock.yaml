@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@appnest/masonry-layout':
+    specifier: ^2.2.3
+    version: 2.2.3
   '@astrojs/preact':
     specifier: ^3.1.0
     version: 3.1.0(@babel/core@7.23.9)(preact@10.19.4)(vite@5.1.1)
@@ -71,6 +74,10 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.22
+    dev: false
+
+  /@appnest/masonry-layout@2.2.3:
+    resolution: {integrity: sha512-q4q48iygVyaFaaogu5xeYNHR5jj4yZMB4zC1JmfOggz7DPCp/QIJGbnLctf3y2maNtGz4PiLXrQRQlmx5hO57A==}
     dev: false
 
   /@astrojs/compiler@2.5.3:

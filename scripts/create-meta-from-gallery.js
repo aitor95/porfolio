@@ -11,11 +11,19 @@ const defaultObject = { location: '' };
 async function processImages() {
   try {
     const files = await fs.readdir(galleryPath);
-    const imageFiles = files.filter(file => /\.(webp)$/i.test(file));
+    const imageFiles = files
+      .filter(file => /\.(webp)$/i.test(file))
+      .sort((a, b) => {
+        const numA = parseInt(a.match(/\d+/)[0]);
+        const numB = parseInt(b.match(/\d+/)[0]);
+        return numA - numB;
+      });
+
     const metadataArray = [];
     for (const file of imageFiles) {
       const filePath = path.join(galleryPath, file);
       const { height, width } = sizeOf(filePath);
+      console.log("filePath: ", filePath, width, height)
       metadataArray.push({
         height,
         width
@@ -28,7 +36,7 @@ async function processImages() {
       metadataArrayLoc = existingData;
     }
 
-    // Add defaultObject to metadataArrayLoc if needed
+    // Añadir defaultObject a metadataArrayLoc si es necesario
     while (metadataArrayLoc.length < metadataArray.length) {
       metadataArrayLoc.push(defaultObject);
     }

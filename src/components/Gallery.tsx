@@ -13,12 +13,21 @@ interface PhotoInfo {
   width: number;
 }
 
+type Masonry<T> = T & { gap: string; maxcolwidth: string };
+declare global {
+  namespace preact.createElement.JSX {
+    interface IntrinsicElements {
+      ['masonry-layout']: Masonry<JSX.HTMLAttributes>;
+    }
+  }
+}
+
 export default function Gallery({ location }: GalleryProps) {
   const [filteredImages, setFilteredImages] = useState<PhotoInfo[]>([]);
 
   useEffect(() => {
     const init = async (): Promise<void> => {
-
+      await import('@appnest/masonry-layout');
       const module = await import('photoswipe/lightbox');
       const PhotoSwipeLightbox = module.default;
       const lightbox = new PhotoSwipeLightbox({
@@ -27,6 +36,7 @@ export default function Gallery({ location }: GalleryProps) {
         pswpModule: () => import('photoswipe'),
       });
       lightbox.init();
+      console.log('Masonry loaded');
 
     };
     init();
@@ -50,7 +60,13 @@ export default function Gallery({ location }: GalleryProps) {
 
   return (
     <>
-      <section className="grid gap-4" id="gallery">
+      {/* <section className="grid gap-4" id="gallery"> */}
+      <masonry-layout
+        gap='24'
+        maxcolwidth='500'
+        class='lg:mx-auto mx-4 py-20'
+        id='gallery'
+      >
         {filteredImages.map((photo, i) => {
           const { height, width } = photo;
           return (
@@ -70,10 +86,10 @@ export default function Gallery({ location }: GalleryProps) {
             </a>
           );
         })}
-      </section>
-      {/* <div>
-        {All()}
-      </div> */}
+      </masonry-layout>
+      {/* </section> */}
+
+
     </>
   );
 }
