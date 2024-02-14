@@ -11,3 +11,15 @@ section {
 #gallery a {
   cursor: zoom-in;
 }
+
+img:hover {
+  --shadow-color: 0deg 0% 80%;
+  box-shadow:
+    0px 0.5px 0.8px hsl(var(--shadow-color) / 0),
+    -0.2px 2.9px 4.4px hsl(var(--shadow-color) / 0.05),
+    -0.4px 5px 7.5px hsl(var(--shadow-color) / 0.11),
+    -0.6px 7.4px 11.1px hsl(var(--shadow-color) / 0.16),
+    -0.9px 10.8px 16.3px hsl(var(--shadow-color) / 0.21),
+    -1.3px 15.7px 23.6px hsl(var(--shadow-color) / 0.27),
+    -1.9px 22.8px 34.3px hsl(var(--shadow-color) / 0.32);
+}

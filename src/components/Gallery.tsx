@@ -36,8 +36,6 @@ export default function Gallery({ location }: GalleryProps) {
         pswpModule: () => import('photoswipe'),
       });
       lightbox.init();
-      console.log('Masonry loaded');
-
     };
     init();
   }, []);
@@ -60,15 +58,12 @@ export default function Gallery({ location }: GalleryProps) {
 
   return (
     <>
-      {/* <section className="grid gap-4" id="gallery"> */}
       <masonry-layout
         gap='24'
         maxcolwidth='500'
-        class='lg:mx-auto mx-4 py-20'
         id='gallery'
       >
-        {filteredImages.map((photo, i) => {
-          const { height, width } = photo;
+        {filteredImages.map(({ height, width }, i) => {
           return (
             <a
               href={`/gallery/${i + 1}.webp`}
@@ -79,7 +74,7 @@ export default function Gallery({ location }: GalleryProps) {
               key={i}
             >
               <img
-                className="min-w-full"
+                className="min-w-full rounded-md hover:scale-[1.03] transition-transform duration-200"
                 loading="lazy"
                 src={`/gallery/thumbnails/${i + 1}.webp`}
               />
@@ -87,9 +82,6 @@ export default function Gallery({ location }: GalleryProps) {
           );
         })}
       </masonry-layout>
-      {/* </section> */}
-
-
     </>
   );
 }
