@@ -1,0 +1,58 @@
+---
+import SkillItem from "@components/SkillItem.astro";
+const SKILLS = [
+  {
+    title: "Frontend",
+    skills: "HTML, CSS, Javascript",
+  },
+  {
+    title: "Backend",
+    skills: "Node.js, REST APIs",
+  },
+  {
+    title: "Frameworks",
+    skills: "React, Astro, Tailwind",
+  },
+  {
+    title: "Base de datos",
+    skills: "SQL",
+  },
+  {
+    title: "Control de versiones",
+    skills: "Git, Github, Chrome DevTools",
+  },
+  {
+    title: "Diseño",
+    skills: "Figma, Prototipado, Wireframes",
+  },
+];
+---
+
+<section id="skills" class="grid grid-cols-1 pt-12
+  md:pt-24
+  lg:grid-cols-12">
+  <header class="col-span-full grid grid-cols-12 mb-10 sm:items-end">
+    <h1
+      class="col-span-full text-accent uppercase font-semibold text-xl
+            sm:col-span-3
+            lg:mr-16 lg:w-52 lg:text-right"
+    >
+      Habilidades
+    </h1>
+    <h2 class="col-span-full
+        sm:col-span-8">
+      Herramientas y tecnologías
+    </h2>
+  </header>
+  <article
+    class="grid grid-cols-1 gap-y-6 px-1 col-span-full
+        sm:grid-cols-2
+        lg:gap-y-12 lg:grid-cols-12"
+  >
+    {
+      SKILLS.map((skill, index) => (
+        <SkillItem title={skill.title} skills={skill.skills} index={index} />
+      ))
+    }
+  </article>
+</section>

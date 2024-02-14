@@ -1,0 +1,48 @@
+---
+import ExperienceItem from "@components/ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Jul 21 - Actualmente",
+    title: "HMI Infotainment Developer · Bertrandt",
+    description:
+      "Implementación gráfica del software HMI-UX para los vehículos de marca SEAT y CUPRA, dentro de los clusters Comfort, Navegación y Parking.",
+  },
+  {
+    date: "Abr 21 - Jul 2021",
+    title: "Front-End Developer · Dosgrapas",
+    description:
+      "Desarrollo de páginas web interactivas mediante Webflow y Wordpress, para organizaciones como elBulli1846, bakingFuture y finesFormes",
+    enlaces: {
+      elBulli: "https://elbullifoundation.com/elbulli1846/",
+      bakingFuture: "https://www.bakingfuture.com/",
+      finesFormes: "https://www.finesformes.com/",
+    },
+  },
+];
+---
+
+<section
+  id="experience"
+  class="grid grid-cols-1 pt-12 md:pt-24 lg:grid-cols-12"
+>
+  <h1
+    class="text-accent uppercase font-semibold text-xl mb-8 col-span-2 lg:col-span-3 lg:mr-24 lg:w-52 lg:text-right"
+  >
+    Experiencia
+  </h1>
+  <div
+    class="text-pretty sm:col-span-12 md:col-span-10 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+  >
+    {
+      EXPERIENCE.map((experience) => (
+        <ExperienceItem
+          date={experience.date}
+          title={experience.title}
+          description={experience.description}
+          enlaces={experience.enlaces}
+        />
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+import TextHighlight from "@components/elements/TextHighlight.astro";
+---
+
+<section
+  id="about"
+  class="grid grid-cols-1 py-12
+md:pt-24
+lg:grid-cols-12
+xl:pt-20"
+>
+  <h1
+    class="col-span-3 text-accent uppercase font-semibold text-xl mb-4
+        lg:text-right lg:mr-24 lg:w-52"
+  >
+    Sobre mí
+  </h1>
+  <article
+    class="font-light flex flex-col gap-5
+        md:max-w-2xl
+        lg:col-span-9 lg:max-w-2xl lg:text-pretty"
+  >
+    <p>
+      Actualmente soy Ingeniero en
+      <TextHighlight
+        content="Bertrandt"
+        url="https://www.bertrandt.com/en/hmi-ux-development"
+        target="_blank"
+      /> creando la
+      <TextHighlight
+        content="Interfaz HMI"
+        url="https://www.seat.uy/autos/leon-cupra/tecnologia"
+        target="_blank"
+      /> de los vehículos
+      <TextHighlight
+        content="CUPRA"
+        url="https://www.seat.uy/autos/leon-cupra/tecnologia"
+        target="_blank"
+      /> y
+      <TextHighlight
+        content="SEAT"
+        url="https://www.seat.es/"
+        target="_blank"
+      />.
+    </p>
+    <p>
+      Como Ingeniero Multimedia, disfruto navegando entre ingeniería y diseño,
+      combinando el conocimiento técnico con mi buen ojo para el diseño con el
+      fin de crear un producto visualmente atractivo.
+    </p>
+    <p>
+      <span class="font-semibold">
+        Cuando no estoy delante de una pantalla</span
+      >, seguramente esté disfrutando de una sesión de gimnasio, leyendo todo
+      tipo de fantasía o aprendiendo a ser mejor <TextHighlight
+        content="fotógrafo."
+        url="/photography"
+      />
+    </p>
+  </article>
+</section>

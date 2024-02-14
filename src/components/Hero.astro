@@ -1,0 +1,140 @@
+---
+import Github from "@icons/Github.astro";
+import Instagram from "@icons/Instagram.astro";
+import Linkedin from "@icons/Linkedin.astro";
+---
+
+<section
+  class="text-2xl font-light flex flex-col justify-center leading-10 pt-12
+    sm:text-3xl sm:leading-relaxed
+    lg:pt-20 lg:h-screen
+    xl:pl-20"
+>
+  <!-- Dropshadow -> x:5px | y:5px | blur:15px | spread:-5px	 -->
+  <a
+    href="https://www.linkedin.com/in/aitorblesa/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span
+      class="py-2 px-6 ml-12 w-[220px] bg-white
+        border-2 rounded-tl-xl rounded-tr-xl rounded-br-xl shadow-[5px_5px_15px_-5px_rgba(0,0,0,0.2)] border-zinc-200
+        text-sm font-semibold text-[#4E4CA8]
+        md:ml-24"
+    >
+      Disponible para trabajar
+    </span>
+  </a>
+  <img
+    src="logo.webp"
+    class="size-14 rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-md shadow-[5px_5px_15px_-5px_rgba(0,0,0,0.25)] mb-5"
+    alt="aitorblesa foto"
+  />
+  <h1 class="mb-10 flex flex-row items-center">
+    Hola! <img
+      class="wave-hand animated bg-cover bg-center size-8 mx-3"
+      src="wave.png"
+      alt="imagen de mano saludando"
+    />
+  </h1>
+  <h2 class="max-w-[624px]">
+    soy <span class="font-semibold">Aitor Blesa</span>, ingeniero de software
+    front-end orientado en el diseño y centrado en la creación de interfaces y
+    experiencias interactivas.
+  </h2>
+  <ul class="flex flex-row gap-5 mt-4 text-zinc-300">
+    <li>
+      <a
+        href="https://www.github.com/aitor95"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Github />
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.instagram.com/aitorblesa/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Instagram />
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.linkedin.com/in/aitorblesa/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Linkedin />
+      </a>
+    </li>
+  </ul>
+</section>
+<style>
+  .wave-hand {
+    cursor: pointer;
+  }
+  .wave-hand.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .wave-hand.wave {
+    animation-name: wave;
+  }
+
+  @keyframes wave {
+    from {
+      transform: none;
+    }
+
+    15% {
+      transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+    }
+
+    30% {
+      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 7deg);
+    }
+
+    45% {
+      transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
+    }
+
+    75% {
+      transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -2deg);
+    }
+
+    to {
+      transform: none;
+    }
+  }
+</style>
+<script>
+  const hand = document.querySelector(".wave-hand");
+  const elementHand = hand.classList;
+
+  function waveOnLoad() {
+    elementHand.add("wave");
+    setTimeout(function () {
+      elementHand.remove("wave");
+    }, 2000);
+  }
+
+  setTimeout(function () {
+    waveOnLoad();
+  }, 1000);
+
+  hand.addEventListener("mouseover", function () {
+    elementHand.add("wave");
+  });
+
+  hand.addEventListener("mouseout", function () {
+    elementHand.remove("wave");
+  });
+</script>
