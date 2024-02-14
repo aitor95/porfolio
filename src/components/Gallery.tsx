@@ -4,11 +4,20 @@ import imagesInfo from '@data/meta-gallery.json';
 import { useEffect, useState } from 'preact/hooks';
 import './styles/Gallery.css';
 
-export default function Gallery({ location }) {
-  const [filteredImages, setFilteredImages] = useState([]);
+interface GalleryProps {
+  location: string
+}
+
+interface PhotoInfo {
+  height: number;
+  width: number;
+}
+
+export default function Gallery({ location }: GalleryProps) {
+  const [filteredImages, setFilteredImages] = useState<PhotoInfo[]>([]);
 
   useEffect(() => {
-    const init = async () => {
+    const init = async (): Promise<void> => {
 
       const module = await import('photoswipe/lightbox');
       const PhotoSwipeLightbox = module.default;

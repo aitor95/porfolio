@@ -45,7 +45,7 @@ export default function GalleryBase() {
           </a> */}
         </nav>
       </header>
-      <Gallery location={location} />
+      <Gallery location={location || ''} />
     </>
   );
 }
