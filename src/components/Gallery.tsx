@@ -1,7 +1,7 @@
 import 'photoswipe/style.css';
 import locationInfo from '@data/meta-gallery-location.json';
 import imagesInfo from '@data/meta-gallery.json';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState, useRef } from 'preact/hooks';
 import './styles/Gallery.css';
 
 interface GalleryProps {
@@ -57,32 +57,35 @@ export default function Gallery({ location }: GalleryProps) {
   }, [location]);
 
   return (
-    <>
-      <masonry-layout
-        gap='24'
-        maxcolwidth='500'
-        id='gallery'
-      >
-        {filteredImages.map(({ height, width }, i) => {
-          return (
-            <a
-              className="rounded-md hover:scale-[1.03] transition-transform duration-200"
-              href={`/gallery/${i + 1}.webp`}
-              data-pswp-width={width}
-              data-pswp-height={height}
-              data-cropped="true"
-              target="_blank"
-              key={i}
-            >
-              <img
-                className="min-w-full"
-                loading="lazy"
-                src={`/gallery/thumbnails/${i + 1}.webp`}
-              />
-            </a>
-          );
-        })}
-      </masonry-layout>
-    </>
+    <masonry-layout
+      gap='24'
+      maxcolwidth='500'
+      id='gallery'
+    >
+      {filteredImages.map(({ height, width }, i) => {
+        return (
+          <a
+            className="group rounded-md hover:scale-[1.03] transition-transform duration-200"
+            href={`/gallery/${i + 1}.webp`}
+            data-cropped="true"
+            data-pswp-width={width}
+            data-pswp-height={height}
+            target="_blank"
+          >
+            <img
+              className="w-full h-auto rounded-md object-cover"
+              loading="lazy"
+              src={`/gallery/thumbnails/${i + 1}.webp`}
+            />
+            <img
+              class="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
+              loading="lazy"
+              src={`/gallery/thumbnails/${i + 1}.webp`}
+              alt="Imagen con efecto blur para hacer de sombra de una fotografía de los premios ESLAND"
+            />
+          </a>
+        );
+      })}
+    </masonry-layout>
   );
 }
