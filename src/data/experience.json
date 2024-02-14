@@ -1,0 +1,17 @@
+[
+  {
+    "date": "Jul 21 - Actualmente",
+    "title": "HMI Infotainment Developer · Bertrandt",
+    "description": "Implementación gráfica del software HMI-UX para los vehículos de marca SEAT y CUPRA, dentro de los clusters Comfort, Navegación y Parking."
+  },
+  {
+    "date": "Abr 21 - Jul 2021",
+    "title": "Front-End Developer · Dosgrapas",
+    "description": "Desarrollo de páginas web interactivas mediante Webflow y Wordpress, para organizaciones como elBulli1846, bakingFuture y finesFormes",
+    "enlaces": {
+      "elBulli": "https://elbullifoundation.com/elbulli1846/",
+      "bakingFuture": "https://www.bakingfuture.com/",
+      "finesFormes": "https://www.finesformes.com/"
+    }
+  }
+]

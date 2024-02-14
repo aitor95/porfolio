@@ -11,25 +11,27 @@ import Linkedin from "@icons/Linkedin.astro";
     xl:pl-20"
 >
   <!-- Dropshadow -> x:5px | y:5px | blur:15px | spread:-5px	 -->
-  <a
-    href="https://www.linkedin.com/in/aitorblesa/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <span
-      class="py-2 px-6 ml-12 w-[220px] bg-white
-        border-2 rounded-tl-xl rounded-tr-xl rounded-br-xl shadow-[5px_5px_15px_-5px_rgba(0,0,0,0.2)] border-zinc-200
-        text-sm font-semibold text-[#4E4CA8]
-        md:ml-24"
+  <div class="flex flex-row items-center mb-5 h-28">
+    <img
+      src="logo.webp"
+      class="size-14 rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-md shadow-[5px_5px_15px_-5px_rgba(0,0,0,0.25)]"
+      alt="aitorblesa foto"
+    />
+    <a
+      href="https://www.linkedin.com/in/aitorblesa/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="ml-10 self-start"
     >
-      Disponible para trabajar
-    </span>
-  </a>
-  <img
-    src="logo.webp"
-    class="size-14 rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl rounded-br-md shadow-[5px_5px_15px_-5px_rgba(0,0,0,0.25)] mb-5"
-    alt="aitorblesa foto"
-  />
+      <span
+        class="py-2 px-6 w-[220px] bg-white
+        border-2 rounded-tl-xl rounded-tr-xl rounded-br-xl shadow-[5px_5px_15px_-5px_rgba(0,0,0,0.2)] border-zinc-200
+        text-sm font-semibold text-[#4E4CA8]"
+      >
+        Disponible para trabajar
+      </span>
+    </a>
+  </div>
   <h1 class="mb-10 flex flex-row items-center">
     Hola! <img
       class="wave-hand animated bg-cover bg-center size-8 mx-3"
