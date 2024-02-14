@@ -1,4 +1,8 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import Background from "@components/elements/Background.astro";
+import "@fontsource-variable/onest";
+
 interface Props {
 	title: string;
 }
@@ -13,11 +17,40 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Aitor Blesa es un ingeniero de software que crea productos y experiencias accesibles y usables para la web."
+		/>
 		<title>{title}</title>
+		<meta property="og:locale" content="es_ES" />
+		<meta
+			property="	og:description"
+			content="Aitor Blesa es un ingeniero de software que crea productos y experiencias accesibles y usables para la web."
+		/>
+		<meta property="og:site_name" content=`${title}` />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="aitorblesa.com" />
+		<ViewTransitions />
 	</head>
-	<body>
+	<body id="home" class="text-slate-700">
+		<Background />
 		<slot />
+		<style is:global>
+			:root {
+			}
+			html {
+				font-family: "Onest Variable", sans-serif;
+				scroll-behavior: smooth;
+			}
+
+			@media (prefers-reduced-motion) {
+				html {
+					scroll-behavior: auto;
+				}
+			}
+			svg {
+				transition: all ease-in-out 150ms;
+			}
+		</style>
 	</body>
 </html>
-<style is:global></style>

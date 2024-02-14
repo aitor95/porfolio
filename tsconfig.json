@@ -18,7 +18,7 @@
         "src/icons/*"
       ],
       "@pages/*": [
-        "src/pages/*"
+        "src/components/pages/*"
       ],
       "@layouts/*": [
         "src/layouts/*"
