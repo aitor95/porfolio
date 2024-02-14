@@ -66,6 +66,7 @@ export default function Gallery({ location }: GalleryProps) {
         {filteredImages.map(({ height, width }, i) => {
           return (
             <a
+              className="rounded-md hover:scale-[1.03] transition-transform duration-200"
               href={`/gallery/${i + 1}.webp`}
               data-pswp-width={width}
               data-pswp-height={height}
@@ -74,7 +75,7 @@ export default function Gallery({ location }: GalleryProps) {
               key={i}
             >
               <img
-                className="min-w-full rounded-md hover:scale-[1.03] transition-transform duration-200"
+                className="min-w-full"
                 loading="lazy"
                 src={`/gallery/thumbnails/${i + 1}.webp`}
               />
