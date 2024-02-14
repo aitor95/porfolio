@@ -1,18 +1,20 @@
+---
+import NavItem from "@components/NavItem.astro";
+---
+
 <header
     class="justify-center items-center py-6 w-full mx-auto nav hidden
     xl:flex xl:fixed"
 >
-    <nav class="flex gap-x-10 bg-white/20 px-4 py-2">
-        <a class="hover:bg-slate-100 rounded-full px-3 transition" href="#home"
-            >Inicio</a
-        >
-        <a
-            class="hover:bg-slate-100 rounded-full px-3 transition"
-            href="#experience">Experiencia</a
-        >
-        <a class="hover:bg-slate-100 rounded-full px-3 transition" href="#about"
-            >Sobre mi</a
-        >
+    <nav class="flex gap-x-10 bg-white/20 px-4 py-2 uppercase">
+        <!-- <TextHighlight
+        content="Bertrandt"
+        url="https://www.bertrandt.com/en/hmi-ux-development"
+        target="_blank"
+      /> -->
+        <NavItem href="#home">Inicio</NavItem>
+        <NavItem href="#experience">Experiencia</NavItem>
+        <NavItem href="#about">Sobre mi</NavItem>
     </nav>
 </header>
 <style>

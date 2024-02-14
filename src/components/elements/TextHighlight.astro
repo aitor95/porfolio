@@ -1,9 +1,9 @@
 ---
-const { content, url, target } = Astro.props;
+const { url, target } = Astro.props;
 const linkProps = {
   href: url,
-  ...(target ? { target } : {})
-}
+  ...(target ? { target } : {}),
+};
 ---
 
 <a {...linkProps}>
@@ -12,6 +12,6 @@ const linkProps = {
     relative inline-block cursor-pointer
     after:[''] after:bottom-0 after:opacity-0 after:absolute after:left-0 after:w-full after:border-b-4 after:text-black after:border-black
     after:transition-opacity after:ease-in-out after:duration-500 hover:after:opacity-100"
-    >{content}</span
+    ><slot /></span
   >
 </a>
