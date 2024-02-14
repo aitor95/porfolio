@@ -1,5 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-// import Gallery from "./Gallery";
+import Gallery from "./Gallery";
 
 export default function GalleryBase() {
 
@@ -45,7 +45,7 @@ export default function GalleryBase() {
           </a> */}
         </nav>
       </header>
-      {/* <Gallery location={location} /> */}
+      <Gallery location={location} />
     </>
   );
 }

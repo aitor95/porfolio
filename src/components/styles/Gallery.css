@@ -1,0 +1,13 @@
+section {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+@media (max-width: 500px) {
+  section {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+#gallery a {
+  cursor: zoom-in;
+}
