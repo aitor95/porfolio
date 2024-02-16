@@ -8,7 +8,6 @@ section {
   }
 }
 
-
 #gallery a {
   cursor: zoom-in;
   animation: fade-up-images linear both;

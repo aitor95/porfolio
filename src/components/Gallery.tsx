@@ -43,7 +43,7 @@ export default function Gallery({ location }: GalleryProps) {
 
   let filteredIndex;
 
-  if (location.trim() === '') {
+  if (location.trim() === '' || location === "All") {
     filteredIndex = locationInfo.map((_, index) => index + 1);
   } else {
     filteredIndex = locationInfo
@@ -58,6 +58,7 @@ export default function Gallery({ location }: GalleryProps) {
       gap='24'
       maxcolwidth='500'
       id='gallery'
+      class="mx-auto w-full"
     >
       {filteredIndex.map((index, i) => {
         const { height, width } = filteredImagesInfo[i]
