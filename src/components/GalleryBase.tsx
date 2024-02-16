@@ -26,7 +26,7 @@ export default function GalleryBase() {
           {locationsUnique.map((locationItem) => (
             <a
               href="#"
-              class={`transition-colors hover:text-gray-950`}
+              class={`transition-colors hover:text-gray-950 ${location === locationItem ? 'text-gray-950' : ''}`}
               onClick={handleClick}
             >
               {locationItem}
