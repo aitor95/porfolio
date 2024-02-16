@@ -22,7 +22,7 @@ export default function GalleryBase() {
           </a>
           <span class="text-xl sm:text-2xl">Photography</span>
         </div>
-        <nav class="flex gap-4 tracking-normal sm:tracking-widest uppercase text-gray-500 text-xs sm:text-base">
+        <nav class="flex gap-4 tracking-normal sm:tracking-widest uppercase text-gray-500 text-base sm:text-lg">
           <a
             href="#"
             class={`transition-colors hover:text-gray-950 ${location === 'All' ? 'text-gray-950' : ''}`}
