@@ -1,31 +1,17 @@
 import { useState, useEffect } from "preact/hooks";
 import Gallery from "./Gallery";
+import Locations from '../data/meta-gallery-location.json';
 
 export default function GalleryBase() {
+  const locationsUnique = [...new Set(Locations.map(loc => loc.location))];
+  const [location, setLocation] = useState<string>('');
 
-  const [location, setLocation] = useState<string | null>('')
-
-  useEffect(() => {
-    const init = async () => {
-
-      const module = await import('photoswipe/lightbox');
-      const PhotoSwipeLightbox = module.default;
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: '#gallery',
-        children: 'a',
-        pswpModule: () => import('photoswipe'),
-      });
-      lightbox.init();
-
-    };
-    init();
-  }, []);
   const handleClick = (event: MouseEvent) => {
-    event.preventDefault()
-    const target = event.target as HTMLElement
-    const currentLocation = target.textContent
-    setLocation(currentLocation)
-  }
+    event.preventDefault();
+    const target = event.target as HTMLAnchorElement;
+    const currentLocation = target.textContent || '';
+    setLocation(currentLocation);
+  };
 
   return (
     <>
@@ -37,15 +23,18 @@ export default function GalleryBase() {
           <span class="text-xl sm:text-3xl">Photography</span>
         </div>
         <nav class="flex gap-4 tracking-widest uppercase font-semibold text-gray-500">
-          {/* <a href="" class={`transition-colors hover:text-gray-950 ${location === 'Scotland' ? 'text-gray-950' : ''}`} onClick={handleClick}>
-            Scotland
-          </a> */}
-          {/* <a href="" class={`transition-colors hover:text-gray-950 ${location === 'Iceland' ? 'text-gray-950' : ''}`} onClick={handleClick}>
-            Iceland
-          </a> */}
+          {locationsUnique.map((locationItem) => (
+            <a
+              href="#"
+              class={`transition-colors hover:text-gray-950`}
+              onClick={handleClick}
+            >
+              {locationItem}
+            </a>
+          ))}
         </nav>
       </header>
-      <Gallery location={location || ''} />
+      <Gallery location={location} />
     </>
   );
 }

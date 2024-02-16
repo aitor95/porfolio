@@ -1,7 +1,7 @@
 import 'photoswipe/style.css';
 import locationInfo from '@data/meta-gallery-location.json';
 import imagesInfo from '@data/meta-gallery.json';
-import { useEffect, useState, useRef } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import './styles/Gallery.css';
 
 interface GalleryProps {
@@ -14,6 +14,7 @@ interface PhotoInfo {
 }
 
 type Masonry<T> = T & { gap: string; maxcolwidth: string };
+
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
@@ -23,7 +24,6 @@ declare global {
 }
 
 export default function Gallery({ location }: GalleryProps) {
-  const [filteredImages, setFilteredImages] = useState<PhotoInfo[]>([]);
 
   useEffect(() => {
     const init = async (): Promise<void> => {
@@ -40,21 +40,18 @@ export default function Gallery({ location }: GalleryProps) {
     init();
   }, []);
 
-  useEffect(() => {
-    const filterImages = () => {
-      if (location) {
-        const filtered = imagesInfo.filter((_, i) => {
-          const locationAtIndex = locationInfo[i + 1]?.location;
-          return location === locationAtIndex;
-        });
-        setFilteredImages(filtered);
-      } else {
-        setFilteredImages(imagesInfo);
-      }
-    };
 
-    filterImages();
-  }, [location]);
+  let filteredIndex;
+
+  if (location.trim() === '') {
+    filteredIndex = locationInfo.map((_, index) => index + 1);
+  } else {
+    filteredIndex = locationInfo
+      .map((loc, index) => loc.location === location ? index + 1 : -1)
+      .filter(index => index !== -1);
+  }
+
+  const filteredImagesInfo = filteredIndex.map(index => imagesInfo[index - 1]);
 
   return (
     <masonry-layout
@@ -62,11 +59,12 @@ export default function Gallery({ location }: GalleryProps) {
       maxcolwidth='500'
       id='gallery'
     >
-      {filteredImages.map(({ height, width }, i) => {
+      {filteredIndex.map((index, i) => {
+        const { height, width } = filteredImagesInfo[i]
         return (
           <a
             className="group rounded-md hover:scale-[1.03] transition-transform duration-200"
-            href={`/gallery/${i + 1}.webp`}
+            href={`/gallery/${index}.webp`}
             data-cropped="true"
             data-pswp-width={width}
             data-pswp-height={height}
@@ -75,17 +73,18 @@ export default function Gallery({ location }: GalleryProps) {
             <img
               className="w-full h-auto rounded-md object-cover"
               loading="lazy"
-              src={`/gallery/thumbnails/${i + 1}.webp`}
+              src={`/gallery/thumbnails/${index}.webp`}
             />
             <img
-              class="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
+              className="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
               loading="lazy"
-              src={`/gallery/thumbnails/${i + 1}.webp`}
-              alt="Imagen con efecto blur para hacer de sombra de una fotografía de los premios ESLAND"
+              src={`/gallery/thumbnails/${index}.webp`}
+              alt="Imagen con efecto blur para hacer de sombra de una fotografía"
             />
           </a>
         );
       })}
+
     </masonry-layout>
   );
 }

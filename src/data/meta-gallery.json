@@ -4,11 +4,11 @@
     "width": 1946
   },
   {
-    "height": 2500,
+    "height": 3000,
     "width": 2000
   },
   {
-    "height": 2500,
+    "height": 3000,
     "width": 2000
   },
   {
@@ -44,8 +44,8 @@
     "width": 2921
   },
   {
-    "height": 2318,
-    "width": 1854
+    "height": 1688,
+    "width": 1350
   },
   {
     "height": 900,
@@ -80,7 +80,7 @@
     "width": 1350
   },
   {
-    "height": 2410,
+    "height": 2892,
     "width": 1928
   },
   {
@@ -92,8 +92,8 @@
     "width": 2080
   },
   {
-    "height": 2432,
-    "width": 1946
+    "height": 998,
+    "width": 799
   },
   {
     "height": 2190,
@@ -104,16 +104,16 @@
     "width": 2488
   },
   {
-    "height": 1968,
-    "width": 1968
+    "height": 1688,
+    "width": 1350
   },
   {
     "height": 1080,
     "width": 1350
   },
   {
-    "height": 1719,
-    "width": 2148
+    "height": 1605,
+    "width": 2850
   },
   {
     "height": 2000,
@@ -188,8 +188,8 @@
     "width": 2000
   },
   {
-    "height": 1706,
-    "width": 2559
+    "height": 1510,
+    "width": 2682
   },
   {
     "height": 2071,
@@ -212,8 +212,8 @@
     "width": 2080
   },
   {
-    "height": 1688,
-    "width": 1350
+    "height": 2117,
+    "width": 1693
   },
   {
     "height": 3120,
@@ -224,16 +224,16 @@
     "width": 1350
   },
   {
-    "height": 1731,
-    "width": 3075
+    "height": 1970,
+    "width": 2955
   },
   {
     "height": 2000,
     "width": 3000
   },
   {
-    "height": 1867,
-    "width": 2800
+    "height": 1429,
+    "width": 2538
   },
   {
     "height": 1752,
@@ -252,15 +252,23 @@
     "width": 2024
   },
   {
-    "height": 1887,
-    "width": 2830
+    "height": 1947,
+    "width": 1947
   },
   {
-    "height": 1964,
-    "width": 2946
+    "height": 1678,
+    "width": 2980
   },
   {
     "height": 2080,
     "width": 3120
+  },
+  {
+    "height": 2080,
+    "width": 3120
+  },
+  {
+    "height": 900,
+    "width": 1350
   }
 ]
