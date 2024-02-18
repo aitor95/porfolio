@@ -16,8 +16,8 @@ const convertAndRename = async (directory, file) => {
     const image = sharp(filePath);
 
     const metadata = await image.metadata();
-    const newWidth = Math.round(metadata.width * 0.5);
-    const newHeight = Math.round(metadata.height * 0.5);
+    const newWidth = Math.round(metadata.width * 0.4);
+    const newHeight = Math.round(metadata.height * 0.4);
 
     await image
       .resize(newWidth, newHeight, { fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 0 } })
