@@ -1,7 +1,7 @@
 import 'photoswipe/style.css';
 import locationInfo from '@data/meta-gallery-location.json';
 import imagesInfo from '@data/meta-gallery.json';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import './styles/Gallery.css';
 
 interface GalleryProps {
@@ -62,8 +62,11 @@ export default function Gallery({ location }: GalleryProps) {
     >
       {filteredIndex.map((index, i) => {
         const { height, width } = filteredImagesInfo[i];
-        const imagePath = `/gallery/${index}.webp`;
-        const thumbnailPath = `/gallery/thumbnails/${index}.webp`;
+        const resizedWidth = Math.floor(width * 0.6);
+        const resizedHeight = Math.floor(height * 0.6);
+        const cloudinaryBaseURL = 'https://res.cloudinary.com/aitorblesadev/image/upload/';
+        const imagePath = `${cloudinaryBaseURL}w_${resizedWidth},h_${resizedHeight},c_fill,q_auto,f_auto/${index}.webp`;
+        const thumbnailPath = `${cloudinaryBaseURL}w_${resizedWidth},h_${resizedHeight},c_fill,q_auto,f_auto/thumbnails/${index}.webp`;
 
         return (
           <a
@@ -77,14 +80,13 @@ export default function Gallery({ location }: GalleryProps) {
             <img
               className="w-full h-auto rounded-md object-cover"
               loading="lazy"
-              src={thumbnailPath} // Utiliza la miniatura como src inicial
-              srcSet={`${imagePath} 1000w, ${thumbnailPath} 500w`} // Proporciona diferentes versiones de la imagen
-              sizes="(max-width: 600px) 500px, 1000px" // Define tamaños para diferentes viewports
+              src={thumbnailPath}
+              sizes="(max-width: 600px) 500px, 1000px"
             />
             <img
               className="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
               loading="lazy"
-              src={thumbnailPath} // Utiliza la miniatura como src inicial
+              src={thumbnailPath}
               alt="Imagen con efecto blur para hacer de sombra de una fotografía"
             />
           </a>
