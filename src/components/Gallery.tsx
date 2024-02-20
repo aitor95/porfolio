@@ -26,10 +26,10 @@ declare global {
 export default function Gallery({ location }: GalleryProps) {
 
   useEffect(() => {
-    const init = async (): Promise<void> => {
-      await import('@appnest/masonry-layout');
-      const module = await import('photoswipe/lightbox');
-      const PhotoSwipeLightbox = module.default;
+    const initGallery = async () => {
+      const module = await import('@appnest/masonry-layout');
+      module.default
+      const PhotoSwipeLightbox = (await import('photoswipe/lightbox')).default;
       const lightbox = new PhotoSwipeLightbox({
         gallery: '#gallery',
         children: 'a',
@@ -37,7 +37,7 @@ export default function Gallery({ location }: GalleryProps) {
       });
       lightbox.init();
     };
-    init();
+    initGallery();
   }, []);
 
 
@@ -61,11 +61,14 @@ export default function Gallery({ location }: GalleryProps) {
       class="mx-auto w-full"
     >
       {filteredIndex.map((index, i) => {
-        const { height, width } = filteredImagesInfo[i]
+        const { height, width } = filteredImagesInfo[i];
+        const imagePath = `/gallery/${index}.webp`;
+        const thumbnailPath = `/gallery/thumbnails/${index}.webp`;
+
         return (
           <a
             className="group rounded-md hover:scale-[1.03] transition-transform duration-200"
-            href={`/gallery/${index}.webp`}
+            href={imagePath}
             data-cropped="true"
             data-pswp-width={width}
             data-pswp-height={height}
@@ -74,18 +77,19 @@ export default function Gallery({ location }: GalleryProps) {
             <img
               className="w-full h-auto rounded-md object-cover"
               loading="lazy"
-              src={`/gallery/thumbnails/${index}.webp`}
+              src={thumbnailPath} // Utiliza la miniatura como src inicial
+              srcSet={`${imagePath} 1000w, ${thumbnailPath} 500w`} // Proporciona diferentes versiones de la imagen
+              sizes="(max-width: 600px) 500px, 1000px" // Define tamaños para diferentes viewports
             />
             <img
               className="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
               loading="lazy"
-              src={`/gallery/thumbnails/${index}.webp`}
+              src={thumbnailPath} // Utiliza la miniatura como src inicial
               alt="Imagen con efecto blur para hacer de sombra de una fotografía"
             />
           </a>
         );
       })}
-
     </masonry-layout>
   );
 }

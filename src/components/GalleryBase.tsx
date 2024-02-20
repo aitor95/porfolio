@@ -4,7 +4,7 @@ import Locations from '../data/meta-gallery-location.json';
 
 export default function GalleryBase() {
   const locationsUnique = [...new Set(Locations.map(loc => loc.location))];
-  const [location, setLocation] = useState<string>('');
+  const [location, setLocation] = useState<string>(locationsUnique[1]);
 
   const handleClick = (event: MouseEvent) => {
     event.preventDefault();
