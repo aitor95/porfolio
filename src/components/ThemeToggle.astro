@@ -85,7 +85,6 @@ let isDark = false;
     };
 
     const themePreference = getThemePreference();
-    console.log("pref: ", themePreference);
     isDark =
       themePreference === "dark" ||
       (themePreference === "system" && matchMedia.matches);
