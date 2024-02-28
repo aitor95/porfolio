@@ -3,7 +3,7 @@ import SunIcon from "@icons/Sun.astro";
 import MoonIcon from "@icons/Moon.astro";
 import SystemIcon from "@icons/System.astro";
 
-const THEMES = ["Light", "Dark", "System"];
+const THEMES = ["Claro", "Oscuro", "Sistema"]; // Updated theme names
 let isDark = false;
 ---
 
@@ -13,24 +13,24 @@ let isDark = false;
     class="appearance-none border-none flex hover:text-accent transition"
   >
     <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
+    <SunIcon id="claro" class="theme-toggle-icon size-5 transition-all" />
     <MoonIcon
-      id="dark"
+      id="oscuro"
       class="theme-toggle-icon absolute size-5 transition-all"
     />
     <SystemIcon
-      id="system"
+      id="sistema"
       class="theme-toggle-icon absolute size-5 transition-all"
     />
   </button>
   <nav
     id="themes-menu"
-    class="absolute border-slate-400/20 bg-gray-300/60 opacity-0 top-9 right-0 text-sm p-1 min-w-[8rem] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+    class="absolute bg-dropdown opacity-0 top-9 right-0 text-sm p-1 min-w-[8rem] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
   >
     <ul>
       {
         THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:text-accent rounded-sm transition-all">
+          <li class="themes-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 rounded-sm hover:text-accent transition-all">
             {theme}
           </li>
         ))
@@ -63,11 +63,11 @@ let isDark = false;
 
   function getThemePreference() {
     if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system";
+      return localStorage.getItem("theme") ?? "sistema";
     }
     return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "dark"
-      : "light";
+      ? "oscuro"
+      : "claro";
   }
   function updateIcon(themePreference) {
     document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
@@ -86,8 +86,8 @@ let isDark = false;
 
     const themePreference = getThemePreference();
     isDark =
-      themePreference === "dark" ||
-      (themePreference === "system" && matchMedia.matches);
+      themePreference === "oscuro" ||
+      (themePreference === "sistema" && matchMedia.matches);
     updateIcon(themePreference);
     document.documentElement.classList[isDark ? "add" : "remove"]("dark");
   }
@@ -99,6 +99,7 @@ let isDark = false;
   document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
     e.stopPropagation();
     const isClosed = !themesMenu.classList.contains("open");
+    console.log(isClosed);
     themesMenu.classList[isClosed ? "add" : "remove"]("open");
   });
 
@@ -110,7 +111,7 @@ let isDark = false;
   });
 
   document.addEventListener("astro:after-swap", function () {
-    if (localStorage.theme === "dark")
+    if (localStorage.theme === "oscuro")
       document.documentElement.classList.toggle("dark", true);
   });
 </script>

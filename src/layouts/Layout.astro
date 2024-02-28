@@ -47,6 +47,9 @@ const { title } = Astro.props;
 				--color-content-light: 17 17 17;
 				--color-content-dark: 209 213 219;
 				--color-content: var(--color-content-light);
+				--color-dropdown-light: 209 213 219;
+				--color-dropdown-dark: 73 79 114;
+				--color-dropdown: var(--color-dropdown-light);
 			}
 
 			html {
@@ -78,6 +81,7 @@ const { title } = Astro.props;
 				.dark {
 					--color-content: var(--color-content-dark);
 					--color-accent: var(--color-accent-dark);
+					--color-dropdown: var(--color-dropdown-dark);
 				}
 			}
 
