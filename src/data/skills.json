@@ -1,26 +1,26 @@
 [
-  {
-    "title": "Frontend",
-    "skills": "HTML, CSS, Javascript"
-  },
-  {
-    "title": "Backend",
-    "skills": "Node.js, REST APIs"
-  },
-  {
-    "title": "Frameworks",
-    "skills": "React, Astro, Tailwind"
-  },
-  {
-    "title": "Base de datos",
-    "skills": "SQL"
-  },
-  {
-    "title": "Control de versiones",
-    "skills": "Git, Github, Chrome DevTools"
-  },
-  {
-    "title": "Diseño",
-    "skills": "Figma, Prototipado, Wireframes"
-  }
+	{
+		"title": "Frontend",
+		"skills": "HTML, CSS, Javascript"
+	},
+	{
+		"title": "Backend",
+		"skills": "Node.js, REST APIs"
+	},
+	{
+		"title": "Frameworks",
+		"skills": "React, Astro, Tailwind"
+	},
+	{
+		"title": "Base de datos",
+		"skills": "SQL"
+	},
+	{
+		"title": "Control de versiones",
+		"skills": "Git, Github, Chrome DevTools"
+	},
+	{
+		"title": "Diseño",
+		"skills": "Figma, Prototipado, Wireframes"
+	}
 ]
