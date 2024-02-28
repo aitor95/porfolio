@@ -89,7 +89,7 @@ let isDark = false;
       themePreference === "oscuro" ||
       (themePreference === "sistema" && matchMedia.matches);
     updateIcon(themePreference);
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    document.documentElement.classList.toggle("dark", isDark);
   }
 
   updateTheme();
@@ -112,6 +112,6 @@ let isDark = false;
 
   document.addEventListener("astro:after-swap", function () {
     if (localStorage.theme === "oscuro")
-      document.documentElement.classList.toggle("dark", true);
+      document.documentElement.classList.toggle("dark", isDark);
   });
 </script>
