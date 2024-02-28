@@ -119,7 +119,7 @@ import Linkedin from "@icons/Linkedin.astro";
 </style>
 <script>
   const hand = document.querySelector(".wave-hand");
-  const elementHand = hand.classList;
+  const elementHand = hand!.classList;
 
   function waveOnLoad() {
     elementHand.add("wave");
@@ -132,11 +132,11 @@ import Linkedin from "@icons/Linkedin.astro";
     waveOnLoad();
   }, 1000);
 
-  hand.addEventListener("mouseover", function () {
+  hand!.addEventListener("mouseover", function () {
     elementHand.add("wave");
   });
 
-  hand.addEventListener("mouseout", function () {
+  hand!.addEventListener("mouseout", function () {
     elementHand.remove("wave");
   });
 </script>
