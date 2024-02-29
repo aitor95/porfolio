@@ -18,7 +18,7 @@ type Masonry<T> = T & { gap: string; maxcolwidth: string };
 declare global {
 	namespace preact.createElement.JSX {
 		interface IntrinsicElements {
-			["masonry-layout"]: Masonry<JSX.HTMLAttributes>;
+			"masonry-layout": Masonry<JSX.HTMLAttributes>;
 		}
 	}
 }
@@ -39,7 +39,7 @@ export default function Gallery({ location }: GalleryProps) {
 		init();
 	}, []);
 
-	let filteredIndex;
+	let filteredIndex: number[];
 
 	if (location.trim() === "" || location === "All") {
 		filteredIndex = locationInfo.map((_, index) => index + 1);
@@ -62,7 +62,7 @@ export default function Gallery({ location }: GalleryProps) {
 		>
 			{filteredIndex.map((index, i) => {
 				const { height, width } = filteredImagesInfo[i];
-	
+
 				return (
 					<a
 						className="group rounded-md hover:scale-[1.03] transition-transform duration-200"
@@ -80,7 +80,6 @@ export default function Gallery({ location }: GalleryProps) {
 							width={width}
 							height={height}
 							alt="Imagen de la galería"
-
 						/>
 						<img
 							className="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
