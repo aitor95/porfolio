@@ -56,62 +56,67 @@ let isDark = false;
   }
 </style>
 
-<script is:inline>
-  let remove = null;
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  const themesMenu = document.getElementById("themes-menu");
+<script is:inline data-astro-rerun>
+  document.addEventListener('astro:page-load', () => {
 
-  function getThemePreference() {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "sistema";
+    let remove = null;
+    const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+    const themesMenu = document.getElementById("themes-menu");
+    
+    function getThemePreference() {
+      if (typeof localStorage !== "undefined") {
+        return localStorage.getItem("theme") ?? "sistema";
+      }
+      
+      return window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "oscuro"
+        : "claro";
     }
-    return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "oscuro"
-      : "claro";
-  }
-  function updateIcon(themePreference) {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0";
-    });
-  }
 
-  function updateTheme() {
-    if (remove != null) {
-      remove();
+    function updateIcon(themePreference) {
+      document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
+        element.style.scale = element.id === themePreference ? "1" : "0";
+      });
     }
-    matchMedia.addEventListener("change", updateTheme);
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme);
-    };
 
-    const themePreference = getThemePreference();
-    isDark =
+    function updateTheme() {
+      if (remove != null) {
+        remove();
+      }
+      matchMedia.addEventListener("change", updateTheme);
+      remove = () => {
+        matchMedia.removeEventListener("change", updateTheme);
+      };
+      
+      const themePreference = getThemePreference();
+      isDark =
       themePreference === "oscuro" ||
       (themePreference === "sistema" && matchMedia.matches);
-    updateIcon(themePreference);
-    document.documentElement.classList.toggle("dark", isDark);
-  }
+      updateIcon(themePreference);
+      document.documentElement.classList.toggle("dark", isDark);
+    }
 
-  updateTheme();
-
-  document.addEventListener("click", () => themesMenu.classList.remove("open"));
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isClosed = !themesMenu.classList.contains("open");
-    console.log(isClosed);
-    themesMenu.classList[isClosed ? "add" : "remove"]("open");
-  });
-
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
-      updateTheme();
+    updateTheme();
+    
+    document.addEventListener("click", () => themesMenu.classList.remove("open"));
+    
+    document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isClosed = !themesMenu.classList.contains("open");
+      console.log(isClosed);
+      themesMenu.classList[isClosed ? "add" : "remove"]("open");
     });
-  });
+    
+    document.querySelectorAll(".themes-menu-option").forEach((element) => {
+      element.addEventListener("click", (e) => {
+        localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+        updateTheme();
+      });
+    });
 
-  document.addEventListener("astro:after-swap", function () {
-    if (localStorage.theme === "oscuro")
+    document.addEventListener("astro:after-swap", function () {
+      if (localStorage.theme === "oscuro")
       document.documentElement.classList.toggle("dark", isDark);
   });
+})
 </script>
