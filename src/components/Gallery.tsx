@@ -8,10 +8,10 @@ interface GalleryProps {
 	location: string;
 }
 
-interface PhotoInfo {
-	height: number;
-	width: number;
-}
+// interface PhotoInfo {
+// 	height: number;
+// 	width: number;
+// }
 
 export default function Gallery({ location }: GalleryProps) {
 	useEffect(() => {
