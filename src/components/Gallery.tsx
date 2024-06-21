@@ -65,7 +65,8 @@ export default function Gallery({ location }: GalleryProps) {
 							rel="noreferrer"
 						>
 							<img
-								className="w-full h-auto rounded-md object-cover"
+								decoding="async"
+								className="rounded-md object-cover"
 								loading="lazy"
 								src={`/gallery/thumbnails/${index}.webp`}
 								width={width}

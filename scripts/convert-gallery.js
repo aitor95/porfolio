@@ -2,11 +2,13 @@ import { readdir, unlink } from 'fs/promises';
 import sharp from 'sharp';
 import { join, extname, basename } from 'path';
 
+// Escanea el directorio y filtra los archivos por tipo
 const scanDirectory = async (directory, fileTypes) => {
   const files = await readdir(directory);
   return files.filter(file => fileTypes.includes(extname(file).toLowerCase()));
 };
 
+// Convierte y renombra los archivos
 const convertAndRename = async (directory, file) => {
   try {
     const filePath = join(directory, file);
@@ -16,12 +18,12 @@ const convertAndRename = async (directory, file) => {
     const image = sharp(filePath);
 
     const metadata = await image.metadata();
-    const newWidth = Math.round(metadata.width * 0.4);
-    const newHeight = Math.round(metadata.height * 0.4);
+    const newWidth = Math.round(metadata.width * 0.2);
+    const newHeight = Math.round(metadata.height * 0.2);
 
     await image
       .resize(newWidth, newHeight, { fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 0 } })
-      .webp({ quality: 60 })
+      .webp({ quality: 55 })
       .toFile(newFilePath);
 
     console.info(`Converted to ${newFilePath}`);
@@ -33,10 +35,10 @@ const convertAndRename = async (directory, file) => {
   }
 };
 
-const directory = 'public/gallery/'; // Ruta del directorio
-const fileTypes = ['.jpg', '.jpeg', '.png']; // Tipos de archivo a procesar
+// Directorio y tipos de archivo a procesar
+const directory = 'public/gallery/';
+const fileTypes = ['.jpg', '.jpeg', '.png'];
 
+// Escanea y procesa los archivos
 const files = await scanDirectory(directory, fileTypes);
-
-// Procesamiento en paralelo
 await Promise.all(files.map(file => convertAndRename(directory, file)));
