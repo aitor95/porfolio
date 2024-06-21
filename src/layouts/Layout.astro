@@ -2,6 +2,7 @@
 import { ViewTransitions } from "astro:transitions";
 import Background from "@components/elements/Background.astro";
 import "@fontsource-variable/onest";
+import Navigation from "@components/Navigation.astro";
 
 interface Props {
 	title: string;
@@ -37,6 +38,8 @@ const { title } = Astro.props;
 	</head>
 	<body id="home" class="relative text-content">
 		<Background />
+		<Navigation />
+
 		<slot />
 		<style is:global>
 			:root {
