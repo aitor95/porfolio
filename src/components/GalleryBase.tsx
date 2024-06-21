@@ -17,7 +17,7 @@ export default function GalleryBase() {
 		<div>
 			<header class="flex flex-col gap-4 justify-start items-start mb-4 sm:mb-8 lg:mb-12 w-full md:flex-row md:items-end md:justify-between">
 				<div class="flex flex-col gap-2 font-light text-3xl uppercase  ">
-					<a href="/" class="font-bold text-accent">
+					<a href="/#experiencia" class="font-bold text-accent">
 						Aitor Blesa
 					</a>
 					<span class="text-xl sm:text-2xl">Photography</span>
@@ -25,9 +25,8 @@ export default function GalleryBase() {
 				<nav class="flex gap-4 tracking-normal sm:tracking-widest uppercase text-content text-base sm:text-lg">
 					<button
 						type="button"
-						className={`transition-colors hover:text-accent ${
-							location === "All" ? "text-accent" : ""
-						}`}
+						className={`transition-colors hover:text-accent ${location === "All" ? "text-accent" : ""
+							}`}
 						onClick={handleClick}
 					>
 						All
@@ -35,9 +34,8 @@ export default function GalleryBase() {
 					{locationsUnique.map((locationItem) => (
 						<button
 							type="button"
-							className={`transition-colors hover:text-accent ${
-								location === locationItem ? "text-accent" : ""
-							}`}
+							className={`transition-colors hover:text-accent ${location === locationItem ? "text-accent" : ""
+								}`}
 							onClick={handleClick}
 						>
 							{locationItem}

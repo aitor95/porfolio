@@ -3,44 +3,46 @@ import SunIcon from "@icons/Sun.astro";
 import MoonIcon from "@icons/Moon.astro";
 import SystemIcon from "@icons/System.astro";
 
-const THEMES = ["Claro", "Oscuro", "Sistema"]; // Updated theme names
-let isDark = false;
+const THEMES = ["Light", "Dark", "System"];
 ---
 
 <div class="relative">
   <button
+    transition:persist
     id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:text-accent transition"
+    class="appearance-none border-none flex hover:scale-125 transition"
   >
     <span class="sr-only">Elige el tema</span>
-    <SunIcon id="claro" class="theme-toggle-icon size-5 transition-all" />
+    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
     <MoonIcon
-      id="oscuro"
+      id="dark"
       class="theme-toggle-icon absolute size-5 transition-all"
     />
     <SystemIcon
-      id="sistema"
+      id="system"
       class="theme-toggle-icon absolute size-5 transition-all"
     />
   </button>
-  <nav
+  <div
+    transition:persist
     id="themes-menu"
-    class="absolute bg-dropdown opacity-0 top-9 right-0 text-sm p-1 min-w-[8rem] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+    class="absolute hidden bg-dropdown top-9 right-0 text-sm p-1 min-w-[8rem] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
   >
     <ul>
       {
         THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 rounded-sm hover:text-accent transition-all">
+          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm hover:cursor-pointer">
             {theme}
           </li>
         ))
       }
     </ul>
-  </nav>
+  </div>
 </div>
 
 <style>
   #themes-menu.open {
+    display: inline;
     animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 
@@ -49,6 +51,7 @@ let isDark = false;
       transform: scale(0.8);
       opacity: 0;
     }
+
     to {
       transform: scale(1);
       opacity: 1;
@@ -61,21 +64,23 @@ let isDark = false;
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
   const themesMenu = document.getElementById("themes-menu");
 
-  function getThemePreference() {
+  const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "sistema";
+      return localStorage.getItem("theme") ?? "system";
     }
-    return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "oscuro"
-      : "claro";
-  }
-  function updateIcon(themePreference) {
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const updateIcon = (themePreference) => {
     document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
       element.style.scale = element.id === themePreference ? "1" : "0";
     });
-  }
+  };
 
-  function updateTheme() {
+  const updateTheme = () => {
     if (remove != null) {
       remove();
     }
@@ -85,12 +90,13 @@ let isDark = false;
     };
 
     const themePreference = getThemePreference();
-    isDark =
-      themePreference === "oscuro" ||
-      (themePreference === "sistema" && matchMedia.matches);
+    const isDark =
+      themePreference === "dark" ||
+      (themePreference === "system" && matchMedia.matches);
+
     updateIcon(themePreference);
-    document.documentElement.classList.toggle("dark", isDark);
-  }
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  };
 
   updateTheme();
 
@@ -99,7 +105,6 @@ let isDark = false;
   document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
     e.stopPropagation();
     const isClosed = !themesMenu.classList.contains("open");
-    console.log(isClosed);
     themesMenu.classList[isClosed ? "add" : "remove"]("open");
   });
 
@@ -110,8 +115,7 @@ let isDark = false;
     });
   });
 
-  document.addEventListener("astro:after-swap", function () {
-    if (localStorage.theme === "oscuro")
-      document.documentElement.classList.toggle("dark", isDark);
+  document.addEventListener("astro:after-swap", () => {
+    updateTheme();
   });
 </script>
