@@ -63,6 +63,7 @@ export default function Gallery({ location }: GalleryProps) {
 							data-pswp-height={height}
 							target="_blank"
 							rel="noreferrer"
+							style={{ aspectRatio: `${width} / ${height}`, height: "auto" }}
 						>
 							<img
 								decoding="async"
@@ -72,6 +73,7 @@ export default function Gallery({ location }: GalleryProps) {
 								width={width}
 								height={height}
 								alt="Imagen de la galería"
+								style={{ aspectRatio: `${width} / ${height}`, height: "auto" }}
 							/>
 							<img
 								className="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
@@ -80,6 +82,7 @@ export default function Gallery({ location }: GalleryProps) {
 								width={width}
 								height={height}
 								alt="Imagen con efecto blur para hacer de sombra de una fotografía"
+								style={{ aspectRatio: `${width} / ${height}`, height: "auto" }}
 							/>
 						</a>
 					);
