@@ -96,6 +96,11 @@ const { title } = Astro.props;
 			svg {
 				transition: all ease-in-out 150ms;
 			}
+
+			.button {
+				--offset: 50px;
+				margin-top: calc(100vh + var(--offset));
+			}
 		</style>
 	</body>
 </html>

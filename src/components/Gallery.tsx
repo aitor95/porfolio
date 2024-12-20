@@ -4,6 +4,8 @@ import "photoswipe/style.css";
 import { useEffect } from "preact/hooks";
 import "./styles/Gallery.css";
 import { type Masory } from "@components/types/gallery";
+
+
 interface GalleryProps {
 	location: string;
 }
@@ -52,7 +54,7 @@ export default function Gallery({ location }: GalleryProps) {
 				class="mx-auto w-full"
 			>
 				{filteredIndex.map((index, i) => {
-					const { height, width } = filteredImagesInfo[i];
+					const { height, width } = filteredImagesInfo[i]
 
 					return (
 						<a

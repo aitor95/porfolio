@@ -5,11 +5,12 @@ import Experience from "@components/Experience.astro";
 import Hero from "@components/Hero.astro";
 import Skills from "@components/Skills.astro";
 import Layout from "@layouts/Layout.astro";
+import Button from "@components/elements/Button.astro";
 ---
 
 <Layout title="Aitor Blesa | Frontend Developer">
 	<main
-		class="flex flex-col justify-center mx-auto px-6 min-h-screen
+		class="flex flex-col justify-center mx-auto px-6 min-h-screen scroll-smooth
 	md:px-12 lg:max-w-[1440px]
 	xl:pl-60"
 	>
@@ -17,5 +18,6 @@ import Layout from "@layouts/Layout.astro";
 		<Experience />
 		<Skills />
 		<About />
+		<Button />
 	</main>
 </Layout>
