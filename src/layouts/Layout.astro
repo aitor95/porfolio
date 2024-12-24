@@ -36,7 +36,7 @@ const { title } = Astro.props;
 		<meta property="og:url" content="aitorblesa.com" />
 		<ViewTransitions />
 	</head>
-	<body id="home" class="relative text-content">
+	<body id="home" class="relative text-content min-h-screen">
 		<Background />
 		<Navigation />
 
@@ -74,8 +74,8 @@ const { title } = Astro.props;
 
 			body {
 				color: var(--color-content);
-				display: flex;
-				flex-direction: column;
+				display: grid;
+				grid-template-columns: auto;
 				min-height: 100vh;
 				overscroll-behavior: none;
 			}
@@ -96,11 +96,25 @@ const { title } = Astro.props;
 			svg {
 				transition: all ease-in-out 150ms;
 			}
-
-			.button {
-				--offset: 50px;
-				margin-top: calc(100vh + var(--offset));
-			}
 		</style>
+
+		<script>
+			const mybutton = document.querySelector(".button");
+			const scrollFunction = () => {
+				if (
+					document.body.scrollTop > 100 ||
+					document.documentElement.scrollTop > 100
+				) {
+					mybutton?.classList.remove("hidden");
+				} else {
+					mybutton?.classList.add("hidden");
+				}
+			};
+			const backToTop = () => {
+				window.scrollTo({ top: 0, behavior: "smooth" });
+			};
+
+			window.addEventListener("scroll", scrollFunction);
+		</script>
 	</body>
 </html>

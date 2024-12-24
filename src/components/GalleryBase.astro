@@ -1,0 +1,29 @@
+---
+import GalleryClient from "./GalleryClient";
+import { getImagesByTag } from "../utils/cloudinary";
+
+// Definir un tipo adecuado para las imágenes (ImageInfo)
+interface ImageInfo {
+  url: string;
+  tags: string[];
+  width: number;
+  height: number;
+  alt: string;
+}
+
+const tag = "scotland"; // Puedes ajustar dinámicamente el tag si es necesario
+let images: ImageInfo[] = []; // Asegúrate de usar el tipo adecuado
+
+try {
+  console.log("inicio");
+  images = await getImagesByTag(tag); // Carga inicial de imágenes
+  console.log(images);
+} catch (error) {
+  console.error("Error loading images:", error);
+}
+---
+
+<div>
+  <h1>Image Gallery</h1>
+  <GalleryClient images={images} location={tag} />
+</div>

@@ -1,14 +1,13 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import GalleryBase from "@components/GalleryBase.tsx";
+import GalleryBase from "@components/GalleryBase.astro";
 import Button from "@components/elements/Button.astro";
+console.log("gse");
 ---
 
 <Layout title="Aitor Blesa | Frontend Developer">
-  <main
-    class="flex flex-col mx-auto p-8 pt-20 min-h-screen w-full scroll-smooth"
-  >
-    <GalleryBase client:load />
+  <main class="flex flex-col mx-auto p-8 pt-20 w-full scroll-smooth">
+    <GalleryBase />
     <Button />
   </main>
 </Layout>
