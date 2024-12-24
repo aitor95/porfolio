@@ -1,13 +1,19 @@
 ---
+import { getImagesByTag, optimizeImageUrl } from "../../utils/cloudinary";
 import Layout from "@layouts/Layout.astro";
-import GalleryBase from "@components/GalleryBase.astro";
-import Button from "@components/elements/Button.astro";
-console.log("gse");
+import GalleryBase from "@components/GalleryBase.tsx";
+
+// Obtener imágenes desde el servidor (con un tag vacío para obtener todas las imágenes)
+const cloudinaryImages = await getImagesByTag("");
+
+// Optimizar las imágenes
+const optimizedImages = cloudinaryImages.map((image) =>
+  optimizeImageUrl(image),
+);
 ---
 
 <Layout title="Aitor Blesa | Frontend Developer">
-  <main class="flex flex-col mx-auto p-8 pt-20 w-full scroll-smooth">
-    <GalleryBase />
-    <Button />
+  <main class="flex flex-col mx-auto p-8 pt-20 min-h-screen w-full">
+    <GalleryBase images={optimizedImages} client:load />
   </main>
 </Layout>

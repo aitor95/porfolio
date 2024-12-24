@@ -26,6 +26,9 @@
       "@utils/*": [
         "src/components/utils/*"
       ],
+      "@types/*": [
+        "src/components/types/*"
+      ]
     }
   }
 }

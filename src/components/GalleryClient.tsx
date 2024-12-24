@@ -1,12 +1,10 @@
 import { useState, useEffect } from "preact/hooks";
+import type { CloudinaryImage } from "./types/types";
 
 interface GalleryClientProps {
-  images: Array<{
-    url: string;
-    alt?: string;
-    [key: string]: any;
-  }>;
+  images: CloudinaryImage[];
   location: string;
+  children?: any;
 }
 
 export default function GalleryClient({ images, location }: GalleryClientProps) {
@@ -33,7 +31,7 @@ export default function GalleryClient({ images, location }: GalleryClientProps) 
               class="rounded-md w-full h-auto"
               loading="lazy"
               src={image.url}
-              alt={image.alt || "Gallery Image"}
+              alt={"Gallery Image"}
             />
           </a>
         ))
