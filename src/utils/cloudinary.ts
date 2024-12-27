@@ -28,7 +28,7 @@ export const getImagesByTag = async (tag: string = ""): Promise<CloudinaryImageT
 
 export const optimizeImageUrl = (image: CloudinaryImageType) => {
   const [base, imgPath] = image.url.split("upload/")
-  const optimizedUrl = `${base}upload/c_scale,w_0.3,h_0.3/dpr_auto/${imgPath}`
+  const optimizedUrl = `${base}upload/c_scale,w_0.35,h_0.35/dpr_auto/${imgPath}`
   return {
     url: optimizedUrl,
     width: image.width,
