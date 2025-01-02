@@ -1,9 +1,11 @@
+import type React from "react";
+
 export type Masory<T> = T & { gap: string; maxcolwidth: string };
 
 declare global {
-	namespace preact.createElement.JSX {
+	namespace react.createElement.JSX {
 		interface IntrinsicElements {
-			"masonry-layout": Masory<JSX.HTMLAttributes>;
+			"masonry-layout": Masory<React.HTMLAttributes<HTMLDivElement>>;
 		}
 	}
 }
@@ -33,4 +35,12 @@ export interface CloudinaryOptimizedImage {
 	width: string,
 	height: string,
 	aspectRatio?: number,
+}
+
+export interface TextHighlightProps {
+  url: string;
+  children: React.ReactNode;
+  target?: string;
+  rel?: string;
+	setModal?: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -1,10 +1,9 @@
 ---
-import About from "@components/About.astro";
+import About from "@components/About.tsx";
 import Experience from "@components/Experience.astro";
 import Hero from "@components/Hero.astro";
 import Skills from "@components/Skills.astro";
 import Layout from "@layouts/Layout.astro";
-import Button from "@components/elements/Button.astro";
 ---
 
 <Layout title="Aitor Blesa | Frontend Developer">
@@ -16,6 +15,6 @@ import Button from "@components/elements/Button.astro";
 		<Hero />
 		<Experience />
 		<Skills />
-		<About />
+		<About client:load />
 	</main>
 </Layout>

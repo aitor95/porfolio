@@ -1,8 +1,8 @@
-import { useState, useEffect } from "preact/hooks";
-import type { CloudinaryImage } from "./types/types";
+import { useState, useEffect } from "react";
+import type { CloudinaryImageType } from "./types/types";
 
 interface GalleryClientProps {
-  images: CloudinaryImage[];
+  images: CloudinaryImageType[];
   location: string;
   children?: any;
 }
@@ -21,14 +21,14 @@ export default function GalleryClient({ images, location }: GalleryClientProps) 
   }, [images, location]);
 
   return (
-    <section id="gallery" class="mx-auto w-full grid gap-6">
+    <section id="gallery" className="mx-auto w-full grid gap-6">
       {filteredImages.length === 0 ? (
-        <p class="text-center">No images found for "{location}"</p>
+        <p className="text-center">No images found for "{location}"</p>
       ) : (
         filteredImages.map((image, index) => (
           <a key={index} href={image.url} target="_blank" rel="noreferrer">
             <img
-              class="rounded-md w-full h-auto"
+              className="rounded-md w-full h-auto"
               loading="lazy"
               src={image.url}
               alt={"Gallery Image"}
