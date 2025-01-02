@@ -116,11 +116,20 @@ const { title } = Astro.props;
 					mybutton?.classList.add("hidden");
 				}
 			};
-			const backToTop = () => {
-				window.scrollTo({ top: 0, behavior: "smooth" });
+
+			const setupScrollListener = () => {
+				window.removeEventListener("scroll", scrollFunction); // Evitar duplicados
+				window.addEventListener("scroll", scrollFunction);
+				scrollFunction(); // Ejecutar una vez al inicio
 			};
 
-			window.addEventListener("scroll", scrollFunction);
+			// Evento inicial al cargar la página
+			setupScrollListener();
+
+			// Reaplicar eventos tras las transiciones de Astro
+			document.addEventListener("astro:after-swap", () => {
+				setupScrollListener();
+			});
 		</script>
 	</body>
 </html>
