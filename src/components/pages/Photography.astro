@@ -1,5 +1,5 @@
 ---
-import { getImagesByTag, optimizeImageUrl } from "../../utils/cloudinary";
+import { getImagesByTag, optimizeImage } from "../../utils/cloudinary";
 import Layout from "@layouts/Layout.astro";
 import GalleryBase from "@components/GalleryBase.tsx";
 
@@ -7,9 +7,7 @@ import GalleryBase from "@components/GalleryBase.tsx";
 const cloudinaryImages = await getImagesByTag("");
 
 // Optimizar las imágenes
-const optimizedImages = cloudinaryImages.map((image) =>
-  optimizeImageUrl(image),
-);
+const optimizedImages = cloudinaryImages.map((image) => optimizeImage(image));
 ---
 
 <Layout title="Aitor Blesa | Frontend Developer">

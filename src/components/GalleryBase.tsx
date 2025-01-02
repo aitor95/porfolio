@@ -106,7 +106,7 @@ export default function GalleryBase({ images }: GalleryBaseProps) {
           <a
             key={i}
             className="group rounded-md hover:scale-[1.03] transition-transform duration-200"
-            href={`${image.url}`}
+            href={`${image.highResURL}`}
             data-cropped="true"
             data-pswp-width={image.width}
             data-pswp-height={image.height}
@@ -118,7 +118,7 @@ export default function GalleryBase({ images }: GalleryBaseProps) {
               decoding="async"
               className="rounded-md object-cover"
               loading="lazy"
-              src={`${image.url}`}
+              src={`${image.optimizedUrl}`}
               width={image.width}
               height={image.height}
               alt="Imagen de la galería"
@@ -127,7 +127,7 @@ export default function GalleryBase({ images }: GalleryBaseProps) {
             <img
               className="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-130 -z-10 object-cover"
               loading="lazy"
-              src={`${image.url}`}
+              src={`${image.optimizedUrl}`}
               width={image.width}
               height={image.height}
               alt="Imagen de la galería"

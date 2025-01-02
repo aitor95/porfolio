@@ -26,8 +26,10 @@ export interface CloudinaryImageType {
 }
 
 export interface CloudinaryOptimizedImage {
+	highResURL?: string;
+  optimizedUrl?: string;
   tags: string[];
-	url: string,
+	url?: string,
 	width: string,
 	height: string,
 	aspectRatio?: number,
