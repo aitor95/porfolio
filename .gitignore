@@ -23,8 +23,3 @@ pnpm-debug.log*
 #dependencies
 package-lock.json
 package.json
-
-pnpm-lock.yaml
-astro.config.mjs
-tsconfig.json
-tailwind.config.cjs
